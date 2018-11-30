@@ -1,7 +1,7 @@
 CC       = gcc
 CFLAGS   = -Wall
 LDFLAGS  =
-OBJFILES = lrange.o main.o
+OBJFILES = lrange.o userinput.o main.o
 TARGET   = lrange.exe
 
 all: $(TARGET)

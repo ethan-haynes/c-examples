@@ -7,4 +7,6 @@ typedef struct {
     char *filename;
 } UserInput;
 
+UserInput *handleInput(char **argv);
+
 #endif
