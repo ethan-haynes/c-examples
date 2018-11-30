@@ -1,8 +1,8 @@
 CC       = gcc
 CFLAGS   = -Wall
 LDFLAGS  =
-OBJFILES = stack.o main.o
-TARGET   = stacktest.exe
+OBJFILES = lrange.o main.o
+TARGET   = lrange.exe
 
 all: $(TARGET)
 
