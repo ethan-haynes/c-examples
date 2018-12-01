@@ -23,17 +23,26 @@ int printLast10(char *filename)
         long new_buff_len = strlen(buffer),
              prev_buff_len = strlen(lines[i%10]);
         
+        /*
+         * check if sliding window is at a new line
+         * on a previously written to index
+         */
         if ( lines[i%10][ prev_buff_len - 1 ] == '\n' ) 
         {
+            /* assigning a new string to replace the old */
             char *str = (char *) malloc(1 + new_buff_len);
-            strcat(str, buffer);
+            strcpy(str, buffer);
+
+            /* freeing the previous string */
+            free(lines[i%10]);
             lines[i%10] = str;
         }
         else
         {
             char *str = (char *) malloc(1 + prev_buff_len + new_buff_len );
-            strcat(str, lines[i%10]);
+            strcpy(str, lines[i%10]);
             strcat(str, buffer);
+            
             lines[i%10] = str;
         }
 
@@ -42,13 +51,14 @@ int printLast10(char *filename)
             i++;
         }
     }
-
+    
     fclose(file);
 
     offset = i - 10 - 1;
     while (i != ++offset)
     {
         printf("%s", lines[offset%10]);
+        free(lines[offset%10]);
     }
 
     return 0;
