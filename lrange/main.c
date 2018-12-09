@@ -6,6 +6,7 @@
 
 int main(int arg, char **argv)
 {
+    // check number of arguments
     if ( arg != 4 )
     {
         printf("Error: must include range and file name\n");
@@ -14,6 +15,7 @@ int main(int arg, char **argv)
 
     UserInput *u_input = handleInput(argv);
 
+    // check if UserInput was created without error
     if ( u_input == NULL )
     {
         printf("Error: numbers in range must be positive\n");
