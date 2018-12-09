@@ -12,6 +12,7 @@ int printLast10(char *filename)
     char    buffer[255];
     FILE    *file = fopen(filename, "r");
 
+    /* check if file exists on path */
     if ( file == NULL )
     {
         perror("ERROR");
@@ -47,9 +48,10 @@ int printLast10(char *filename)
             strcpy(str, lines[i%10]);
             strcat(str, buffer);
             
-            lines[i%10] = str;
+            lines[i%10] = str; // copy string into array
         }
 
+        /* check if at end of line */
         if ( buffer[new_buff_len - 1] == '\n' )
         {
             i++;
